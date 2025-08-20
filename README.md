@@ -43,7 +43,7 @@ Binary packages are available on Ubuntu Launchpad [here](https://launchpad.net/~
 
 ### Debian
 
-Binary packages for amd64 and arm64 architectures are available on the [Releases](https://github.com/bbc/audiowaveform/releases) page.
+Binary packages for amd64 and arm64 architectures are available on the [Releases](https://codeberg.org/chrisn/audiowaveform/releases) page.
 
 Download the correct package file for your Debian version, following the examples below.
 
@@ -63,7 +63,7 @@ Replace the version number with the latest release version.
 
 ### RHEL, CentOS, AlmaLinux etc
 
-Binary packages are available on the [Releases](https://github.com/bbc/audiowaveform/releases) page.
+Binary packages are available on the [Releases](https://codeberg.org/chrisn/audiowaveform/releases) page.
 
 Download the correct RPM for your CentOS version and use these commands to install the RPM package,
 together with all required dependencies. Replace the version number with the latest release version.
@@ -79,19 +79,19 @@ There is an [`audiowaveform`](https://aur.archlinux.org/packages/audiowaveform) 
 
 You can install `audiowaveform` using Homebrew:
 
-    brew tap bbc/audiowaveform
+    brew tap chrisn/audiowaveform https://codeberg.org/chrisn/homebrew-audiowaveform.git
     brew install audiowaveform
 
 ### Windows
 
 Windows binaries are available on the
-[Releases](http://github.com/bbc/audiowaveform/releases) page,
+[Releases](https://codeberg.org/chrisn/audiowaveform/releases) page,
 and are built using
-[compile-static-audiowaveform](https://github.com/chrisn/compile-static-audiowaveform).
+[compile-static-audiowaveform](https://codeberg.org/chrisn/compile-static-audiowaveform).
 
 ### Amazon Linux
 
-A binary package for Amazon Linux 2 is available on the [Releases](https://github.com/bbc/audiowaveform/releases) page.
+A binary package for Amazon Linux 2 is available on the [Releases](https://codeberg.org/chrisn/audiowaveform/releases) page.
 
 Use these commands to install the RPM package, together with all required
 dependencies. Replace the version with the latest release version.
@@ -198,7 +198,7 @@ Install [XCode](https://developer.apple.com/xcode/) and
 
 ### Obtain the source code
 
-    git clone git@github.com:bbc/audiowaveform.git
+    git clone git@codeberg.org:chrisn/audiowaveform.git
     cd audiowaveform
 
 ### Install Google Test test framework
@@ -559,11 +559,10 @@ If you'd like to contribute to audiowaveform, please take a look at our
 
 ## Authors
 
-This software was written by [Chris Needham](https://github.com/chrisn),
-chris at chrisneedham.com.
+This software was written by [Chris Needham](https://chrisneedham.com/about).
 
-Thank you to all our [contributors](https://github.com/bbc/audiowaveform/graphs/contributors).
+Thank you to all our [contributors](https://codeberg.org/chrisn/audiowaveform/activity/contributors).
 
 ## Copyright
 
-Copyright 2013-2025 British Broadcasting Corporation
+Copyright 2025 Chris Needham and contributors

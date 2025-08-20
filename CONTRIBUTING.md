@@ -12,13 +12,13 @@ We may not always be able to respond immediately to feedback, so please bear wit
 
 * If we agree with your feature proposal, we'll work with you to develop and integrate the feature.
 
-* Please avoid making commits directly to your copy of the `master` branch. This branch is reserved for aggregating changes from other people, and for mainline development from the core contributors. If you commit to `master`, it's likely that your local fork will diverge from the [upstream repository](https://github.com/bbc/audiowaveform).
+* Please avoid making commits directly to your copy of the `master` branch. This branch is reserved for aggregating changes from other people, and for mainline development from the core contributors. If you commit to `master`, it's likely that your local fork will diverge from the [upstream repository](https://codeberg.org/chrisn/audiowaveform).
 
 * Before working on a change, please ensure your local fork is up to date with the code in the upstream repository, and create a [feature branch](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow) for your changes.
 
 * We may want to make minor changes to your pull request before merging, so please ensure that the **Allow edits from maintainers** option on your feature branch is enabled.
 
-* Please don't change the [VERSION](https://github.com/bbc/audiowaveform/blob/master/VERSION) file, or update [CHANGELOG.md](https://github.com/bbc/audiowaveform/blob/master/CHANGELOG.md). We'll do that when [preparing a new release](#preparing-a-new-release).
+* Please don't change the [VERSION](https://codeberg.org/chrisn/audiowaveform/src/branch/master/VERSION) file, or update [CHANGELOG.md](https://codeberg.org/chrisn/audiowaveform/src/branch/master/CHANGELOG.md). We'll do that when [preparing a new release](#preparing-a-new-release).
 
 * Please follow the existing coding conventions.
 
@@ -34,20 +34,20 @@ We may not always be able to respond immediately to feedback, so please bear wit
 
 * When it's time to publish a new release version, create a single commit on `master` with the following changes only:
 
-  * Increment the version number in [VERSION](https://github.com/bbc/audiowaveform/blob/master/VERSION).
+  * Increment the version number in [VERSION](https://codeberg.org/chrisn/audiowaveform/src/branch/master/VERSION).
 
-  * Describe the new features in this release in [CHANGELOG.md](https://github.com/bbc/audiowaveform/blob/master/CHANGELOG.md).
+  * Describe the new features in this release in [CHANGELOG.md](https://codeberg.org/chrisn/audiowaveform/src/branch/master/CHANGELOG.md).
 
-  * Update the [debian changelog](https://github.com/bbc/audiowaveform/blob/master/debian/changelog).
+  * Update the [debian changelog](https://codeberg.org/chrisn/audiowaveform/src/branch/master/debian/changelog).
 
 * Tag this commit using the form `X.Y.Z` and push the commit using `git push origin master --tags`.
 
-* In GitHub, [create a Release](https://github.com/bbc/audiowaveform/releases/new) from this tag, with the tag name as Release title, i.e., `X.Y.Z`.
+* In Codeberg, [create a Release](https://codeberg.org/chrisn/audiowaveform/releases/new) from this tag, with the tag name as Release title, i.e., `X.Y.Z`.
 
-* Publish the source package to [Launchpad](https://launchpad.net/) using the [packaging script](https://github.com/bbc/audiowaveform/tree/master/ubuntu).
+* Publish the source package to [Launchpad](https://launchpad.net/) using the [packaging script](https://codeberg.org/chrisn/audiowaveform/src/branch/master/ubuntu).
 
-* Update the [Homebrew formula](https://github.com/bbc/homebrew-audiowaveform).
+* Update the [Homebrew formula](https://codeberg.org/chrisn/homebrew-audiowaveform).
 
-* Compile Windows binaries using [compile-static-audiowaveform](https://github.com/chrisn/compile-static-audiowaveform) and upload to the GitHub Release page.
+* Compile Windows binaries using [compile-static-audiowaveform](https://codeberg.org/chrisn/compile-static-audiowaveform) and upload to the Release page.
 
-* Build [RPM and Debian packages](https://github.com/bbc/audiowaveform/tree/master/rpm) and upload to the GitHub Release page.
+* Build [RPM and Debian packages](https://codeberg.org/chrisn/audiowaveform/src/branch/master/rpm) and upload to the Release page.
