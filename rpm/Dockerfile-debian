@@ -1,9 +1,13 @@
-# Use docker build --build-arg AUDIOWAVEFORM_VERSION=<git-revision>
+# Builds the audiowaveform Debian package
+#
+# Usage:
+#
+# docker build --build-arg AUDIOWAVEFORM_VERSION=<git-revision>
 #  --build-arg AUDIOWAVEFORM_PACKAGE_VERSION=<version>
 #  --build-arg DEBIAN_RELEASE=<release>
 #  --build-arg ARCH=<amd64|arm64>
 
-ARG DEBIAN_RELEASE
+ARG DEBIAN_RELEASE=10
 FROM debian:${DEBIAN_RELEASE}
 
 ARG AUDIOWAVEFORM_VERSION
@@ -20,14 +24,14 @@ RUN apt-get update -y && \
 # Retrieve and build source (see https://github.com/bbc/audiowaveform#building-from-source)
 WORKDIR /root
 
-RUN wget -qO- https://github.com/bbc/audiowaveform/archive/${AUDIOWAVEFORM_VERSION}.tar.gz | tar xfz - && \
-    cd audiowaveform-${AUDIOWAVEFORM_VERSION} && \
+RUN wget -qO- https://codeberg.org/chrisn/audiowaveform/archive/${AUDIOWAVEFORM_VERSION}.tar.gz | tar xfz - && \
+    cd audiowaveform && \
     mkdir build && \
     cd build && \
     cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_TESTS=0 .. && \
     make && \
     cpack -G DEB
 
-WORKDIR /root/audiowaveform-${AUDIOWAVEFORM_VERSION}/build
+WORKDIR /root/audiowaveform/build
 
 RUN mv audiowaveform_${AUDIOWAVEFORM_PACKAGE_VERSION}-1_${ARCH}.deb audiowaveform_${AUDIOWAVEFORM_PACKAGE_VERSION}-1-${DEBIAN_RELEASE}_${ARCH}.deb

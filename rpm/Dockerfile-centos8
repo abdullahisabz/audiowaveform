@@ -1,4 +1,8 @@
-# Use docker build --build-arg AUDIOWAVEFORM_VERSION=<git-revision>
+# Builds the audiowaveform RPM for Centos 8
+#
+# Usage:
+#
+# docker build --build-arg AUDIOWAVEFORM_VERSION=<git-revision>
 #  --build-arg AUDIOWAVEFORM_PACKAGE_VERSION=<version>
 #  --build-arg CENTOS_RELEASE=<release>
 #  --build-arg ARCH=<x86_64|aarch64>
@@ -34,14 +38,14 @@ RUN INSTALL_PKGS="rpm-build wget make cmake gcc-c++ libmad-devel libid3tag-devel
 # Retrieve and build source (see https://github.com/bbc/audiowaveform#building-from-source)
 WORKDIR /root
 
-RUN wget -qO- https://github.com/bbc/audiowaveform/archive/${AUDIOWAVEFORM_VERSION}.tar.gz | tar xfz - && \
-    cd audiowaveform-${AUDIOWAVEFORM_VERSION} && \
+RUN wget -qO- https://codeberg.org/chrisn/audiowaveform/archive/${AUDIOWAVEFORM_VERSION}.tar.gz | tar xfz - && \
+    cd audiowaveform && \
     mkdir build && \
     cd build && \
     cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_TESTS=0 .. && \
     make && \
     cpack -G RPM
 
-WORKDIR /root/audiowaveform-${AUDIOWAVEFORM_VERSION}/build
+WORKDIR /root/audiowaveform/build
 
 RUN mv audiowaveform-${AUDIOWAVEFORM_PACKAGE_VERSION}-1.${ARCH}.rpm audiowaveform-${AUDIOWAVEFORM_PACKAGE_VERSION}-1.el${CENTOS_RELEASE}.${ARCH}.rpm

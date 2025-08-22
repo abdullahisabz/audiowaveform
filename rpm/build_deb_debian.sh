@@ -7,9 +7,9 @@ set -e
 
 source ./cmdline.sh
 
-if [ -z "${DEBIAN_RELEASE}" ]
+if [ -z "${LINUX_RELEASE}" ]
 then
-    echo "Missing debian release number (e.g., 10, 11, 12, or 13)"
+    echo "Missing debian release number (e.g., 11, 12, or 13)"
     exit 1
 fi
 
@@ -30,9 +30,9 @@ docker buildx build \
     --file Dockerfile-debian \
     --build-arg AUDIOWAVEFORM_VERSION=${AUDIOWAVEFORM_VERSION} \
     --build-arg AUDIOWAVEFORM_PACKAGE_VERSION=${AUDIOWAVEFORM_PACKAGE_VERSION} \
-    --build-arg DEBIAN_RELEASE=${DEBIAN_RELEASE} \
+    --build-arg DEBIAN_RELEASE=${LINUX_RELEASE} \
     --build-arg ARCH=${ARCH} .
 CONTAINER_ID=`docker create ${IMAGE}`
-docker cp ${CONTAINER_ID}:/root/audiowaveform-${AUDIOWAVEFORM_VERSION}/build/audiowaveform_${AUDIOWAVEFORM_PACKAGE_VERSION}-1-${DEBIAN_RELEASE}_${ARCH}.deb .
+docker cp ${CONTAINER_ID}:/root/audiowaveform/build/audiowaveform_${AUDIOWAVEFORM_PACKAGE_VERSION}-1-${LINUX_RELEASE}_${ARCH}.deb .
 docker rm -v ${CONTAINER_ID}
 docker rmi ${IMAGE}

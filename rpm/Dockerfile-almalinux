@@ -1,0 +1,44 @@
+# Builds the audiowaveform RPM for AlmaLinux
+#
+# Usage:
+#
+# docker build --build-arg AUDIOWAVEFORM_VERSION=<git-revision>
+#  --build-arg AUDIOWAVEFORM_PACKAGE_VERSION=<version>
+#  --build-arg ALMALINUX_RELEASE=<release>
+#  --build-arg ARCH=<x86_64|aarch64>
+
+ARG ALMALINUX_RELEASE=9
+FROM almalinux:${ALMALINUX_RELEASE}
+
+ARG AUDIOWAVEFORM_VERSION
+ARG AUDIOWAVEFORM_PACKAGE_VERSION
+ARG ALMALINUX_RELEASE
+ARG ARCH
+
+# Use the epel repository (to provide the libmad package)
+
+RUN INSTALL_PKGS="epel-release" && \
+    yum install -y --setopt=tsflags=nodocs  $INSTALL_PKGS && rpm -V $INSTALL_PKGS && \
+    yum clean all -y
+
+# Install audiowaveform build dependencies
+RUN INSTALL_PKGS="rpm-build python3-distro wget git make cmake gcc-c++ libid3tag-devel libsndfile-devel gd-devel boost-devel libmad-devel" && \
+    yum install -y --enablerepo=crb --setopt=tsflags=nodocs  $INSTALL_PKGS && rpm -V $INSTALL_PKGS && \
+    yum clean all -y
+
+RUN yum update -y
+
+# Retrieve and build source (see https://codeberg.org/chrisn/audiowaveform#building-from-source)
+WORKDIR /root
+
+RUN wget -qO- https://codeberg.org/chrisn/audiowaveform/archive/${AUDIOWAVEFORM_VERSION}.tar.gz | tar xfz - && \
+    cd audiowaveform && \
+    mkdir build && \
+    cd build && \
+    cmake -D CMAKE_BUILD_TYPE=Release -D ENABLE_TESTS=0 .. && \
+    make && \
+    cpack -G RPM
+
+WORKDIR /root/audiowaveform/build
+
+RUN mv audiowaveform-${AUDIOWAVEFORM_PACKAGE_VERSION}-1.${ARCH}.rpm audiowaveform-${AUDIOWAVEFORM_PACKAGE_VERSION}-1.el${ALMALINUX_RELEASE}.${ARCH}.rpm

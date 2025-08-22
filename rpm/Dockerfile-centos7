@@ -1,10 +1,14 @@
-# builder image to build the audiowaveform RPM
-FROM centos:7
-
-# Use docker build --build-arg AUDIOWAVEFORM_VERSION=<git-revision>
+# Builds the audiowaveform RPM for Centos 7
+#
+# Usage:
+#
+# docker build --build-arg AUDIOWAVEFORM_VERSION=<git-revision>
 #  --build-arg AUDIOWAVEFORM_PACKAGE_VERSION=<version>
 #  --build-arg CENTOS_RELEASE=<release>
 #  --build-arg ARCH=<x86_64|aarch64>
+
+FROM centos:7
+
 ARG AUDIOWAVEFORM_VERSION
 ARG AUDIOWAVEFORM_PACKAGE_VERSION
 ARG CENTOS_RELEASE
@@ -25,14 +29,14 @@ RUN yum update -y
 # Retrieve and build source (see https://github.com/bbc/audiowaveform#building-from-source)
 WORKDIR /root
 
-RUN wget -qO- https://github.com/bbc/audiowaveform/archive/${AUDIOWAVEFORM_VERSION}.tar.gz | tar xfz - && \
-    cd audiowaveform-${AUDIOWAVEFORM_VERSION} && \
+RUN wget -qO- https://codeberg.org/chrisn/audiowaveform/archive/${AUDIOWAVEFORM_VERSION}.tar.gz | tar xfz - && \
+    cd audiowaveform && \
     mkdir build && \
     cd build && \
     cmake3 -D CMAKE_BUILD_TYPE=Release -D ENABLE_TESTS=0 .. && \
     make && \
     cpack3 -G RPM
 
-WORKDIR /root/audiowaveform-${AUDIOWAVEFORM_VERSION}/build
+WORKDIR /root/audiowaveform/build
 
 RUN mv audiowaveform-${AUDIOWAVEFORM_PACKAGE_VERSION}-1.${ARCH}.rpm audiowaveform-${AUDIOWAVEFORM_PACKAGE_VERSION}-1.el${CENTOS_RELEASE}.${ARCH}.rpm

@@ -9,7 +9,7 @@ The following scripts are available:
 * `build_deb_debian.sh` - Debian (architectures: `amd64` or `arm64`)
 * `build_rpm_centos7.sh` - CentOS 7 (architectures: `x86_64` or `aarch64`)
 * `build_rpm_centos8.sh` - CentOS 8 (architectures: `x86_64` or `aarch64`)
-* `build_rpm_almalinux9.sh` AlmaLinux 9 (architectures: `x86_64` or `aarch64`)
+* `build_rpm_almalinux.sh` AlmaLinux (architectures: `x86_64` or `aarch64`)
 * `build_rpm_amazon_linux_2.sh` - Amazon Linux 2 (architectures: `x86_64` or `aarch64`)
 
 ## Options
@@ -22,7 +22,7 @@ Use the following command line options:
 
 * `-a` Sets the platform architecture to build, e.g., `x86_64`, `amd64`, `aarch64`, `arm64`, etc. Note that these values vary by Linux distribution
 
-* `-d` Sets the debian release number, for the `build_deb_debian.sh` script, e.g., `10`, `11`, `12`, etc.
+* `-r` Sets the Linux release number. For the `build_deb_debian.sh` script, this is the Debian release number, e.g., `10`, `11`, `12`, etc, and similar for `build_rpm_almalinux.sh`
 
 ## Output
 
@@ -34,7 +34,7 @@ These scripts will produce packages such as:
 * audiowaveform-1.5.1-1.el9.x86_64.rpm (AlmaLinux 9)
 * audiowaveform-1.5.1-1.amzn2.x86_64.rpm (Amazon Linux 2)
 
-These can be uploaded to the [Releases](https://github.com/bbc/audiowaveform/releases) page on GitHub.
+These can be uploaded to the [Releases](https://codeberg.org/chrisn/audiowaveform/releases) page on Codeberg.
 
 ## Install
 
