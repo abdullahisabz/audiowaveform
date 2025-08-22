@@ -77,9 +77,8 @@ There is an [`audiowaveform`](https://aur.archlinux.org/packages/audiowaveform) 
 
 ### Mac OSX
 
-You can install `audiowaveform` using Homebrew:
+You can install `audiowaveform` using Homebrew, thanks to [Adam Jensen](https://github.com/acj):
 
-    brew tap chrisn/audiowaveform https://codeberg.org/chrisn/homebrew-audiowaveform.git
     brew install audiowaveform
 
 ### Windows
@@ -98,7 +97,7 @@ dependencies. Replace the version with the latest release version.
 
     sudo amazon-linux-extras install epel
     sudo yum install \
-      https://github.com/bbc/audiowaveform/releases/download/1.10.1/audiowaveform-1.10.1-1.amzn2.x86_64.rpm
+      https://codeberg.org/chrisn/audiowaveform/releases/download/1.10.1/audiowaveform-1.10.1-1.amzn2.x86_64.rpm
 
 ### Docker
 
@@ -509,7 +508,7 @@ audio:
     audiowaveform -i test.wav -o test.png -z 300 -s 60.0 -w 1000 -h 200
 
 If you are using audiowaveform to generate waveform data for use in a web
-application, e.g, using [Peaks.js](https://github.com/bbc/peaks.js), you can
+application, e.g, using [Peaks.js](https://codeberg.org/chrisn/peaks.js), you can
 choose whether to use binary or JSON format waveform data.
 
 The following command generates waveform data in JSON format:
@@ -554,7 +553,7 @@ See COPYING for details.
 
 ## Contributing
 
-If you'd like to contribute to audiowaveform, please take a look at our
+If you'd like to contribute to audiowaveform, please take a look at the
 [contributor guidelines](CONTRIBUTING.md).
 
 ## Authors
