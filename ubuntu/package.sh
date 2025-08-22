@@ -8,7 +8,7 @@
 set -e
 
 PROJECT=audiowaveform
-REPO=git@github.com:bbc/${PROJECT}.git
+REPO=git@codeberg.org:chrisn/${PROJECT}.git
 TAG=1.10.2
 SOURCE_DIR=${PROJECT}_${TAG}
 TARBALL=${SOURCE_DIR}.orig.tar.gz
