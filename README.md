@@ -1,6 +1,6 @@
 # Audio Waveform Image Generator
 
-[![Build Status](https://github.com/bbc/audiowaveform/actions/workflows/cmake.yml/badge.svg?branch=master)](https://github.com/bbc/audiowaveform/actions)
+[![Build Status](https://ci.codeberg.org/api/badges/15098/status.svg)](https://ci.codeberg.org/repos/15098)
 
 **audiowaveform** is a C++ command-line application that generates waveform data
 from either MP3, WAV, FLAC, Ogg Vorbis, or Opus format audio files. Waveform data can
@@ -558,7 +558,7 @@ If you'd like to contribute to audiowaveform, please take a look at the
 
 ## Authors
 
-This software was written by [Chris Needham](https://chrisneedham.com/about).
+This software was written by [Chris Needham](https://codeberg.org/chrisn).
 
 Thank you to all our [contributors](https://codeberg.org/chrisn/audiowaveform/activity/contributors).
 
