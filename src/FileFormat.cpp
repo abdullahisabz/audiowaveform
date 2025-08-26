@@ -51,7 +51,7 @@ FileFormat getFormatViaSndfile(const std::string& filePath)
         // TODO: Other places in the code are just using 
         // Error would it be worth making them LogLevel::Error to make this clearer.
         // Or should I just change this to log(Error)
-        log(LogLevel::Error) << "Error opening file: " << sf_strerror(NULL);
+        log(Error) << "Error opening file: " << sf_strerror(NULL);
     }
 
     int majorFormat = sfinfo.format & SF_FORMAT_TYPEMASK;
